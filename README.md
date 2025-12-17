@@ -2,7 +2,7 @@
 
 Application Streamlit de suivi de performance pour Arkose Montreuil, basée sur les données de fréquentation et de restauration 2025 fournies en CSV.
 
-L’objectif est d’aider à améliorer la communication et le marketing en identifiant :
+L'objectif est d'aider à améliorer la communication et le marketing en identifiant :
 - les périodes fortes / creuses de fréquentation,
 - la relation entre grimpe et restauration,
 - les jours à fort potentiel pour des actions growth (bundles, events, offres spéciales).
@@ -12,24 +12,24 @@ L’objectif est d’aider à améliorer la communication et le marketing en ide
 ## 1. Fonctionnalités
 
 ### Analyse globale
-- Vue d’ensemble avec KPIs :
+- Vue d'ensemble avec KPIs :
   - Total grimpeurs (Passage)
   - Total plats et entrées vendus
   - Nombre de jours observés
-- Résumé automatique de la période (moyenne de passages/jour, jour de pic, etc.).
+  - Résumé automatique de la période (moyenne de passages/jour, jour de pic, etc.).
 
 ### Filtres & segmentations
-- Filtres avancés :
+- **Filtres avancés** :
   - par mois
   - par jour de la semaine
   - par plage de dates
-- Segmentation rapide :
+- **Segmentation rapide** :
   - Tous les jours
   - Week-end uniquement
   - Semaine uniquement
   - Jours forts (top 20 % de fréquentation).
 
-### Onglets d’analyse
+### Onglets d'analyse
 
 1. **📈 Tendances temporelles**
    - Courbes journalières sur la métrique choisie (Passage / Plat / Entrée).
@@ -47,9 +47,9 @@ L’objectif est d’aider à améliorer la communication et le marketing en ide
    - Conseils pour utiliser des bundles grimpe + resto.
 
 4. **🚀 Opportunités marketing**
-   - Liste des jours “forte grimpe / faible resto” → jours à potentiel de montée en panier moyen.
+   - Liste des jours "forte grimpe / faible resto" → jours à potentiel de montée en panier moyen.
    - Vue hebdomadaire des volumes (passages et restauration).
-   - Recommandations adaptées à l’objectif choisi :
+   - Recommandations adaptées à l'objectif choisi :
      - Remplir les jours creux
      - Maximiser le panier moyen
      - Lancer un nouvel event.
@@ -58,63 +58,88 @@ L’objectif est d’aider à améliorer la communication et le marketing en ide
 
 ## 2. Structure du projet
 
+```
 .
-├── app.py # Frontend Streamlit
-├── data_service.py # Backend : chargement + analyse des données
-├── ARKOSE-donnees_2025_graph.csv # Données fournies par Arkose
-├── requirements.txt # Dépendances Python
+├── app.py                              # Frontend Streamlit
+├── data_service.py                     # Backend : chargement + analyse des données
+├── ARKOSE-donnees_2025_graph.csv      # Données fournies par Arkose
+├── requirements.txt                    # Dépendances Python
 └── .streamlit/
-└── config.toml # Thème Streamlit (dark + couleurs Arkose)
-
+    └── config.toml                     # Thème Streamlit (dark + couleurs Arkose)
+```
 
 Le backend (`data_service.py`) centralise la logique métier :
 - chargement sécurisé du CSV,
 - filtres (mois, jours, dates),
 - segments rapides,
 - calcul des KPIs globaux et hebdomadaires,
-- détection des jours “haute grimpe / basse restauration”.
+- détection des jours "haute grimpe / basse restauration".
 
 ---
 
 ## 3. Installation
 
 1. Cloner ou copier le projet dans un dossier local.
+
 2. Placer le fichier `ARKOSE-donnees_2025_graph.csv` à la racine du projet.
 
-Créer un environnement virtuel (recommandé) :
+3. Créer un environnement virtuel (recommandé) :
+   ```bash
+   python -m venv env
+   source env/bin/activate  # macOS / Linux
+   ```
+   ou
+   ```bash
+   env\Scripts\activate  # Windows
+   ```
 
-python -m venv env
-source env/bin/activate # macOS / Linux
-
-ou
-env\Scripts\activate # Windows
-
-
-Installer les dépendances :
-
-pip install -r requirements.txt
-
+4. Installer les dépendances :
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 ---
 
-## 4. Lancement de l’application
+## 4. Lancement de l'application
 
 Depuis la racine du projet :
-
+```bash
 streamlit run app.py
+```
 
-
-L’application sera accessible sur :
-
-- Local URL : `http://localhost:8502` (ou autre port indiqué par Streamlit).
+L'application sera accessible sur :
+- Local URL : `http://localhost:8501` (ou autre port indiqué par Streamlit).
 
 ---
 
 ## 5. Comment présenter le projet
 
 Ce dashboard permet à Arkose Montreuil de :
+- **Comprendre ses patterns de fréquentation** (jours forts/faibles, saisonnalité).
+- **Relier la performance de la restauration** à la fréquentation de la salle.
+- **Identifier des jours à fort potentiel marketing** (beaucoup de grimpeurs mais peu de consommation).
+- **Adapter la stratégie** selon un objectif précis (remplir les jours creux, augmenter le panier moyen, lancer un event).
 
-- Comprendre ses patterns de fréquentation (jours forts/faibles, saisonnalité).
-- Relier la performance de la restauration à la fréquentation de la salle.
-- Identifier des jours à fort potentiel marketing (beaucoup de grimpeurs mais peu de consommation).
-- Adapter la stratégie selon un objectif précis (remplir les jours creux, augmenter le panier moyen, lancer un event).
+---
+
+## 6. Technologies utilisées
+
+- **Python 3.x**
+- **Streamlit** - Framework d'application web
+- **Pandas** - Analyse et manipulation de données
+- **Plotly** - Visualisations interactives
+- **NumPy** - Calculs numériques
+
+---
+
+## 7. Évolutions futures possibles
+
+- Intégration d'autres sources de données (météo, événements locaux)
+- Prédictions de fréquentation avec Machine Learning
+- Export automatique de rapports PDF
+- Alertes automatiques sur les anomalies de fréquentation
+- Comparaison multi-sites (si Arkose dispose d'autres salles)
+
+---
+
+**Fait avec ❤️ pour Arkose Montreuil**
